@@ -1,0 +1,8 @@
+target/
+.mvn/
+*.class
+*.log
+uploads/
+.idea/
+*.iml
+.DS_Store

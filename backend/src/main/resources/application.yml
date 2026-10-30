@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: edusmart-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/edusmart
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # 'update' is convenient for an academic demo project - it creates/updates tables
+      # automatically on startup so there is no separate migration step to run.
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+    open-in-view: false
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+app:
+  cors:
+    allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
+  docker:
+    image: ${DOCKER_JAVA_IMAGE:eclipse-temurin:21-jdk}
+    run-timeout-seconds: ${CODE_RUN_TIMEOUT_SECONDS:5}
+    overall-timeout-seconds: ${CODE_OVERALL_TIMEOUT_SECONDS:20}
+
+logging:
+  level:
+    com.edusmart: INFO
+    org.springframework.web.socket: INFO
