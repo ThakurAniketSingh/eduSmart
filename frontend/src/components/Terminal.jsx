@@ -105,4 +105,6 @@ const Terminal = forwardRef(({ onInput }, ref) => {
   )
 })
 
+Terminal.displayName = 'Terminal'
+
 export default Terminal
